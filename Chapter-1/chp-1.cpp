@@ -19,6 +19,8 @@ g.	Apply indentations correctly to make your program readable.
 h.	No need of classes/objects or makefile
 i.	No need of makefile
 
+// P1_Ethan_Souders.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
 
 #include <iostream>
 #include <string>
@@ -34,9 +36,21 @@ struct Employee // Apprently Struct is the same as a class but with not private 
     double	salary = 0;
 };
 
+void displayPointers(Employee* p, Employee data[]) // I may need to pass this by refrance
+{
+    for (int i = 0; i < sizeof data; i++)
+    {
+        cout << &p[i].firstName << " " << &p[i].lastName << " " << &p[i].SSN <<" " << &p[i].department <<" " <<
+            &p[i].department << " " << &p[i].role << " " << &p[i].salary 
+            
+            << endl;
+    }
+}
+
 void display(Employee data[]) // I may need to pass this by refrance
 {
    
+
     int x = 3;
     for (int i = 0; i < x ; i++)
     {
@@ -60,11 +74,10 @@ void display(Employee data[]) // I may need to pass this by refrance
   
     double y = 0;
     double avg = 0;
-    int counter = 0;
+    int counter = 3;
     for (int i = 0; i < sizeof data; i++)
     {
         y += data[i].salary;
-        counter++;
     }
     avg = y / counter;
 
@@ -79,7 +92,8 @@ int main()
     data[1] = { "Kaylee", "Souders", 443156587, "English", "Teacher", 43000 };
     data[2] = { "Evan", "Souders", 999545131, "Computer", "Tech", 60000 };
     Employee* p = new Employee;
-    
+
+    displayPointers(p, data);
     display(data);
     get_avg_Salery(data);
     //p = &data[2];
@@ -87,5 +101,4 @@ int main()
     //p = nullptr;
     return 0;
 }
-
 
