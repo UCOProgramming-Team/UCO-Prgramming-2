@@ -40,49 +40,51 @@ void display(Employee data[]) // I may need to pass this by refrance
     int x = 3;
     for (int i = 0; i < x ; i++)
     {
-        cout << data[i].firstName << endl;
-        cout << data[i].lastName << endl;
-        cout << data[i].SSN << endl;
-        cout << data[i].department << endl;
-        cout << data[i].role << endl;
-        cout << data[i].salary << endl;
-        if (i >= 0)
+        if (i == 0) {
+            cout << "----------------Employee Data Base----------------" << endl;
+        }
+        cout << data[i].firstName << " | " << data[i].lastName 
+            << " | " << data[i].SSN << " | " << data[i].department
+            << " | " << data[i].role << " | " << data[i].salary << " | " <<
+            endl;
+  
+
+        if (i == 2) 
         {
-            cout << endl << "Next Employee" << endl;
+            cout << "----------------Employee Data Base----------------" << endl;
         }
 
     }
-}double get_avg_Salery(Employee data[])
+}void get_avg_Salery(Employee data[])
 {
-    int i = 0;
-    double y;
-    double avg;
-    int x = 3;
-    for ( i < x; i++;)
+  
+    double y = 0;
+    double avg = 0;
+    int counter = 0;
+    for (int i = 0; i < sizeof data; i++)
     {
-        y =+ data[i].salary;
-        
+        y += data[i].salary;
+        counter++;
     }
-    avg = y / i;
+    avg = y / counter;
 
-    return avg;
+    cout << "Average salery $" << avg << endl;
 
 }
 int main()
 {
     struct Employee data[3];
 
-    data[0] = { "Ethan", "Souders", 44312, "Math", "Tech", 54000 };
-    data[1] = { "Kaylee", "Souders", 443156, "English", "Teacher", 43000 };
-    data[2] = { "Evan", "Souders", 9995451, "Computer", "Tech", 60000 };
-    Employee* p = &data[3];
-
+    data[0] = { "Ethan", "Souders", 443126879, "Math", "Tech", 54000 };
+    data[1] = { "Kaylee", "Souders", 443156587, "English", "Teacher", 43000 };
+    data[2] = { "Evan", "Souders", 999545131, "Computer", "Tech", 60000 };
+    Employee* p = new Employee;
+    
     display(data);
     get_avg_Salery(data);
-
-    //cout << (*p).firstName << endl; used as a test. I really should just use a reposirty 
-    delete p; // This deletes it from the stack 
-
+    //p = &data[2];
+    //delete p;
+    //p = nullptr;
     return 0;
 }
 
